@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace abstractvsinterface
+{
+    class Program
+    {
+
+        abstract class Smartphone
+        {
+            public void Call()
+            {
+                Console.WriteLine("This is the phone making a call. All phones make calls");
+            }
+
+            public abstract void OS();
+
+        }
+
+        class Phone1 : Smartphone
+        {
+
+            public override void OS()
+            {
+                Console.WriteLine("This operating system is android");
+            }
+        }
+
+        class Phone2 : Smartphone
+        {
+            public override void OS()
+            {
+                Console.WriteLine("This operating system is apple");
+            }
+        }
+
+        interface ISpecialFeatures
+        {
+            void TouchScreen();
+            void VoiceCommand();
+        }
+
+        interface IExtraSpecial
+        {
+            void MoreFeatures();
+        }
+
+        class Phone3: ISpecialFeatures, IExtraSpecial
+        {
+            public void TouchScreen()
+            {
+            Console.WriteLine("This phone has a touchscreen");
+
+            }
+        public void VoiceCommand()
+        {
+        Console.WriteLine("This phone has voice command");
+        }
+    public void MoreFeatures()
+    {
+Console.WriteLine("This phone also has more features, because it has two interfaces");
+}
+        }
+        static void Main(string[] args)
+        {
+            Phone1 phone1 = new Phone1();
+            Console.WriteLine("\nThese are the details for phone 1");
+            phone1.Call();
+            phone1.OS();
+           
+            Console.WriteLine("\nThese are the details for phone 2");
+            Phone2 phone2 = new Phone2();
+            phone2.Call();
+            phone2.OS();
+
+    Console.WriteLine("\nThese are the details for phone 3");
+    Phone3 phone3 = new Phone3();
+            phone3.TouchScreen();
+            phone3.MoreFeatures();
+            phone3.VoiceCommand();
+    
+        }
+    }
+}
