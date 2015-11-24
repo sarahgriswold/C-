@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UsingThis
+{
+    class Program
+    {
+
+        public class Demographics
+        {
+            int age;
+            string name;
+
+            public Demographics(string name, int age)
+            {
+                this.age = age;
+                this.name = name;
+            }
+
+            public void Display()
+            {
+                Console.WriteLine("Hello " + name);
+                Console.WriteLine("You are " + age.ToString() + " years old");
+            }
+        }
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("What is your name?");
+            string _name = Console.ReadLine();
+            Console.WriteLine("How old are you?");
+            int _age = Int32.Parse(Console.ReadLine());
+
+            Demographics demo = new Demographics(_name, _age);
+
+            demo.Display();
+           
+        }
+    }
+}
+
+
