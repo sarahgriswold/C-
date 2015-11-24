@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace interfaces
+{
+
+    interface Iintface
+    {
+        void MethodToDo();
+    }
+
+    class Program : Iintface
+    {
+       
+        public static void Main(string[] args)
+        {
+            Program obj = new Program();
+
+            Console.WriteLine("This is not part of the interface");
+            obj.MethodToDo();
+        }
+        public void MethodToDo()
+        {
+            Console.WriteLine("This is part of an interface");
+        }
+
+    }
+
+}
