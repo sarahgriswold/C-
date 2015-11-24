@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Drawing;
+
+
+namespace serialization
+{
+   
+
+
+    [Serializable()]  
+    public class ImgConvert : ISerializable 
+    {
+        string file = @"C:\Users\Sarah\Pictures\unsplash\library.jpg";
+
+        //constructor
+        public ImgConvert()
+        {
+            file = null;
+        }
+
+        
+        public ImgConvert(SerializationInfo info, StreamingContext ctxt)
+        {
+           
+            file = (String)info.GetValue("image", typeof(string));
+        }
+
+        //serialization interface
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("image", file);
+        }
+
+        public static void Main(String[] args)
+        {
+            
+            ImgConvert img = new ImgConvert();
+         
+            //creates binary file
+            Stream stream = File.Open("ImageConvert.txt", FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+
+            //serialize binary file
+            bf.Serialize(stream, img);
+            stream.Close();
+
+            //clear img object
+            img = null;
+
+            //opens binary file
+            stream = File.Open("ImageConvert.txt", FileMode.Open);
+            bf = new BinaryFormatter();
+
+            
+            img = (ImgConvert)bf.Deserialize(stream);
+            stream.Close();
+
+           
+        }
+    }
+}
