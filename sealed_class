@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sealedclass
+{
+    class NotSealed
+    {
+        public static void noSeal()
+        {
+            Console.WriteLine("This is not sealed");
+        }
+    }
+    
+    //the sealed class can inherit from a non-sealed class, but other classes cannot inherit from the sealed class
+    sealed class IsSealed : NotSealed
+    {
+        public static void withSeal()
+        {
+            Console.WriteLine("This is sealed");
+        }
+    }
+    class Program
+    {
+
+       static void Main(string[] args)
+        {
+            NotSealed.noSeal();
+            IsSealed.withSeal();
+            IsSealed.noSeal();
+           
+        }
+    }
+}
