@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace polymorphism
+{
+    class Program
+    {
+
+        static void AddNumber(int x, int y)
+        {
+            Console.WriteLine("Added Numbers 1: " + (x + y));
+        }
+        static void AddNumber(int x, int y, int z)
+        {
+            Console.WriteLine("Added Numbers 2: " + (x + y + z));
+
+        }
+
+        class One
+        {
+            public virtual void Example()
+
+            {
+                Console.WriteLine("This is how to override 1");
+            }
+        }
+
+        class Two : One
+        {
+            public override void Example()
+            {
+            Console.WriteLine("This is how to override 2");
+            }
+    }
+        static void Main(string[] args)
+        {
+            //example of overloading - same method name with different signatures
+
+            AddNumber(1, 2);
+            AddNumber(1, 2, 3);
+
+            //example of overriding - same method with same signatures in different classes
+
+            One obj = new One();
+            obj.Example();
+            obj = new Two();
+            obj.Example();              
+        }
+
+        }
+    }
+
