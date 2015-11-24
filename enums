@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace enums
+{
+    class Program
+    {
+        enum Temperature
+        {
+            Freezing,
+            Chilly,
+            Lukewarm,
+            Warm,
+            Hot
+
+        }
+        static void Main(string[] args)
+        {
+            string[] temps = Temperature.GetNames(typeof(Temperature));
+            foreach (string temp in temps)
+                Console.WriteLine(temp);
+        }
+    }
+}
