@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace delegates
+{
+    class DelegateClass
+    {
+        public delegate void MyDelegate(int x, int y);
+
+        public void Addition(int x, int y)
+        {
+            Console.WriteLine("\nx + y gives us: " + (x + y));
+           
+        }
+        public void Subtraction(int x, int y)
+        {
+            Console.WriteLine("\nx - y gives us: " + (x - y));
+            
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DelegateClass mydel = new DelegateClass();
+            DelegateClass.MyDelegate delobj = null;
+            delobj += mydel.Addition;
+            delobj += mydel.Subtraction;
+
+
+            if (delobj != null)
+            {
+                Console.WriteLine("using the delegate functions with 3 and 2 gives us: ");
+                delobj(3, 2);
+            }
+        }
+    }
+}
