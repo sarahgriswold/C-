@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exceptionhandling
+{
+    class Program
+    {
+       static void Main(string[] args)
+        {
+            try
+            {
+                int a = 100;
+                int b = 5;
+                int c = a + b;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Program executed");
+            }
+
+
+        }
+    }
+}
